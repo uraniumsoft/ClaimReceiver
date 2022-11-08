@@ -219,7 +219,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 0, 30, 7),
                                   child: Text(
-                                    'หน้าหลัก',
+                                    'หน้าหลัก123',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .title2
