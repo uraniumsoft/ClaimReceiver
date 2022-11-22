@@ -131,17 +131,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
+              name: 'DataContentList',
+              path: 'DatContentList',
+              builder: (context, params) => DataContentListWidget(),
+            ),
+            FFRoute(
               name: 'DataStructureAdd',
               path: 'DataStructureAdd',
               builder: (context, params) => DataStructureAddWidget(
                 roomRef: params.getParam(
                     'roomRef', ParamType.DocumentReference, false, 'rooms'),
               ),
-            ),
-            FFRoute(
-              name: 'DataContentList',
-              path: 'DatContentList',
-              builder: (context, params) => DataContentListWidget(),
             ),
             FFRoute(
               name: 'DataContentEdit',
@@ -162,17 +162,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => DataContentListSrchWidget(),
             ),
             FFRoute(
-              name: 'DataStatusList',
-              path: 'DataStatusList',
-              builder: (context, params) => DataStatusListWidget(),
-            ),
-            FFRoute(
               name: 'DataStatusEdit',
               path: 'DataStatusEdit',
               builder: (context, params) => DataStatusEditWidget(
                 statusRef: params.getParam('statusRef',
                     ParamType.DocumentReference, false, 'claimstatus'),
               ),
+            ),
+            FFRoute(
+              name: 'DataStatusList',
+              path: 'DataStatusList',
+              builder: (context, params) => DataStatusListWidget(),
             ),
             FFRoute(
               name: 'DataStatusAdd',

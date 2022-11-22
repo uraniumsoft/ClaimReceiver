@@ -156,14 +156,14 @@ class _DataContentListSrchWidgetState extends State<DataContentListSrchWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 110, 0, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 110, 0, 30),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
                           child: Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(50, 10, 30, 0),
+                                EdgeInsetsDirectional.fromSTEB(50, 10, 30, 30),
                             child: Autocomplete<String>(
                               initialValue: TextEditingValue(),
                               optionsBuilder: (textEditingValue) {
@@ -301,7 +301,7 @@ class _DataContentListSrchWidgetState extends State<DataContentListSrchWidget> {
                   Align(
                     alignment: AlignmentDirectional(0, -0.53),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 40),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [

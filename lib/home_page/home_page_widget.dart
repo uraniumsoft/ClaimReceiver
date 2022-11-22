@@ -168,79 +168,270 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: Align(
-            alignment: AlignmentDirectional(0, -1),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Container(
-                    width: 100,
-                    height: 110,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF39B6EF),
+          child: Stack(
+            children: [
+              Align(
+                alignment: AlignmentDirectional(0, -1),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        width: 100,
+                        height: 110,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF39B6EF),
+                        ),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/nav-logo.png',
+                                width: MediaQuery.of(context).size.width,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.06,
+                                fit: BoxFit.fitHeight,
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 0, 0, 7),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30,
+                                      borderWidth: 1,
+                                      buttonSize: 60,
+                                      icon: Icon(
+                                        Icons.menu,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                        size: 30,
+                                      ),
+                                      onPressed: () async {
+                                        scaffoldKey.currentState!.openDrawer();
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                    child: SingleChildScrollView(
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 110, 0, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            'assets/images/nav-logo.png',
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height * 0.06,
-                            fit: BoxFit.fitHeight,
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
+                                child: StreamBuilder<List<ClaimstatusRecord>>(
+                                  stream: queryClaimstatusRecord(
+                                    queryBuilder: (claimstatusRecord) =>
+                                        claimstatusRecord.where('statusOrder',
+                                            isEqualTo: 1),
+                                    singleRecord: true,
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: CircularProgressIndicator(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<ClaimstatusRecord>
+                                        textClaimstatusRecordList =
+                                        snapshot.data!;
+                                    // Return an empty Container when the document does not exist.
+                                    if (snapshot.data!.isEmpty) {
+                                      return Container();
+                                    }
+                                    final textClaimstatusRecord =
+                                        textClaimstatusRecordList.isNotEmpty
+                                            ? textClaimstatusRecordList.first
+                                            : null;
+                                    return Text(
+                                      textClaimstatusRecord!.statusName!,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1,
+                                    );
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
+                                child: Text(
+                                  '(',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
+                              ),
+                              StreamBuilder<List<ClaimsRecord>>(
+                                stream: queryClaimsRecord(
+                                  queryBuilder: (claimsRecord) => claimsRecord
+                                      .where('statusOrder', isEqualTo: 1),
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: CircularProgressIndicator(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  List<ClaimsRecord> textClaimsRecordList =
+                                      snapshot.data!;
+                                  return Text(
+                                    textClaimsRecordList.length.toString(),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyText1,
+                                  );
+                                },
+                              ),
+                              Text(
+                                ')',
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
+                            ],
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 7),
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30,
-                                  borderWidth: 1,
-                                  buttonSize: 60,
-                                  icon: Icon(
-                                    Icons.menu,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBtnText,
-                                    size: 30,
-                                  ),
-                                  onPressed: () async {
-                                    scaffoldKey.currentState!.openDrawer();
-                                  },
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 0, 30, 7),
-                                  child: Text(
-                                    'หน้าหลัก123',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .title2
-                                        .override(
-                                          fontFamily: 'Opun',
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          useGoogleFonts: false,
-                                        ),
-                                  ),
+                                    EdgeInsetsDirectional.fromSTEB(30, 0, 0, 0),
+                                child: Text(
+                                  'เลขที่เคลม',
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .subtitle1
+                                      .override(
+                                        fontFamily: 'Opun',
+                                        decoration: TextDecoration.underline,
+                                        useGoogleFonts: false,
+                                      ),
                                 ),
                               ),
                             ],
                           ),
+                          StreamBuilder<List<ClaimsRecord>>(
+                            stream: queryClaimsRecord(
+                              queryBuilder: (claimsRecord) => claimsRecord
+                                  .where('statusOrder', isEqualTo: 1),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: CircularProgressIndicator(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<ClaimsRecord> listViewClaimsRecordList =
+                                  snapshot.data!;
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: listViewClaimsRecordList.length,
+                                itemBuilder: (context, listViewIndex) {
+                                  final listViewClaimsRecord =
+                                      listViewClaimsRecordList[listViewIndex];
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            30, 0, 0, 0),
+                                        child: Text(
+                                          listViewClaimsRecord.claimNo!,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5, 0, 0, 0),
+                                        child: Text(
+                                          listViewClaimsRecord.firstname!,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5, 0, 0, 0),
+                                        child: Text(
+                                          listViewClaimsRecord.lastname!,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ],
                       ),
                     ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.03, -0.84),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 30, 7),
+                  child: Text(
+                    'ส่วนงานรับเคลม',
+                    textAlign: TextAlign.center,
+                    style: FlutterFlowTheme.of(context).title2.override(
+                          fontFamily: 'Opun',
+                          color: Colors.white,
+                          fontSize: 20,
+                          useGoogleFonts: false,
+                        ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -22,6 +23,7 @@ class DataContentEditWidget extends StatefulWidget {
 }
 
 class _DataContentEditWidgetState extends State<DataContentEditWidget> {
+  String? dropDownValue;
   TextEditingController? textContentNameController;
   TextEditingController? textContentPriceController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -270,6 +272,55 @@ class _DataContentEditWidgetState extends State<DataContentEditWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
+                                      50, 30, 50, 0),
+                                  child: StreamBuilder<List<BrandsRecord>>(
+                                    stream: queryBrandsRecord(
+                                      queryBuilder: (brandsRecord) =>
+                                          brandsRecord.orderBy('brandName'),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50,
+                                            height: 50,
+                                            child: CircularProgressIndicator(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<BrandsRecord>
+                                          dropDownBrandsRecordList =
+                                          snapshot.data!;
+                                      return FlutterFlowDropDown<String>(
+                                        options: dropDownBrandsRecordList
+                                            .map((e) => e.brandName!)
+                                            .toList()
+                                            .toList(),
+                                        onChanged: (val) =>
+                                            setState(() => dropDownValue = val),
+                                        width: 400,
+                                        height: 50,
+                                        textStyle:
+                                            FlutterFlowTheme.of(context).title3,
+                                        hintText: 'ระบุยี่ห้อสินทรัพย์',
+                                        elevation: 2,
+                                        borderColor: Color(0xFF39B6EF),
+                                        borderWidth: 0,
+                                        borderRadius: 0,
+                                        margin: EdgeInsetsDirectional.fromSTEB(
+                                            12, 4, 12, 4),
+                                        hidesUnderline: true,
+                                      );
+                                    },
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 100, 0, 0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
@@ -285,6 +336,7 @@ class _DataContentEditWidgetState extends State<DataContentEditWidget> {
                                             textContentNameController?.text ??
                                                 '',
                                         unitPrice: FFAppState().PriceNumber,
+                                        brandName: dropDownValue,
                                       );
                                       await columnContentsRecord.reference
                                           .update(contentsUpdateData);
@@ -293,8 +345,8 @@ class _DataContentEditWidgetState extends State<DataContentEditWidget> {
                                     },
                                     text: 'บันทึกข้อมูล',
                                     options: FFButtonOptions(
-                                      width: 130,
-                                      height: 40,
+                                      width: 150,
+                                      height: 50,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryColor,
                                       textStyle: FlutterFlowTheme.of(context)

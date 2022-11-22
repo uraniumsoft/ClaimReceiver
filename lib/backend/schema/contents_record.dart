@@ -15,13 +15,16 @@ abstract class ContentsRecord
 
   double? get unitPrice;
 
+  String? get brandName;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(ContentsRecordBuilder builder) => builder
     ..partName = ''
-    ..unitPrice = 0.0;
+    ..unitPrice = 0.0
+    ..brandName = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('contents');
@@ -47,13 +50,15 @@ abstract class ContentsRecord
 Map<String, dynamic> createContentsRecordData({
   String? partName,
   double? unitPrice,
+  String? brandName,
 }) {
   final firestoreData = serializers.toFirestore(
     ContentsRecord.serializer,
     ContentsRecord(
       (c) => c
         ..partName = partName
-        ..unitPrice = unitPrice,
+        ..unitPrice = unitPrice
+        ..brandName = brandName,
     ),
   );
 

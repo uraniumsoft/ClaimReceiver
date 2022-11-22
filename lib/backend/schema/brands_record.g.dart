@@ -1,40 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'contents_record.dart';
+part of 'brands_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<ContentsRecord> _$contentsRecordSerializer =
-    new _$ContentsRecordSerializer();
+Serializer<BrandsRecord> _$brandsRecordSerializer =
+    new _$BrandsRecordSerializer();
 
-class _$ContentsRecordSerializer
-    implements StructuredSerializer<ContentsRecord> {
+class _$BrandsRecordSerializer implements StructuredSerializer<BrandsRecord> {
   @override
-  final Iterable<Type> types = const [ContentsRecord, _$ContentsRecord];
+  final Iterable<Type> types = const [BrandsRecord, _$BrandsRecord];
   @override
-  final String wireName = 'ContentsRecord';
+  final String wireName = 'BrandsRecord';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, ContentsRecord object,
+  Iterable<Object?> serialize(Serializers serializers, BrandsRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.partName;
-    if (value != null) {
-      result
-        ..add('partName')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.unitPrice;
-    if (value != null) {
-      result
-        ..add('unitPrice')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(double)));
-    }
     value = object.brandName;
     if (value != null) {
       result
@@ -54,10 +39,10 @@ class _$ContentsRecordSerializer
   }
 
   @override
-  ContentsRecord deserialize(
+  BrandsRecord deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new ContentsRecordBuilder();
+    final result = new BrandsRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -65,14 +50,6 @@ class _$ContentsRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'partName':
-          result.partName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'unitPrice':
-          result.unitPrice = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double?;
-          break;
         case 'brandName':
           result.brandName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -90,71 +67,49 @@ class _$ContentsRecordSerializer
   }
 }
 
-class _$ContentsRecord extends ContentsRecord {
-  @override
-  final String? partName;
-  @override
-  final double? unitPrice;
+class _$BrandsRecord extends BrandsRecord {
   @override
   final String? brandName;
   @override
   final DocumentReference<Object?>? ffRef;
 
-  factory _$ContentsRecord([void Function(ContentsRecordBuilder)? updates]) =>
-      (new ContentsRecordBuilder()..update(updates))._build();
+  factory _$BrandsRecord([void Function(BrandsRecordBuilder)? updates]) =>
+      (new BrandsRecordBuilder()..update(updates))._build();
 
-  _$ContentsRecord._(
-      {this.partName, this.unitPrice, this.brandName, this.ffRef})
-      : super._();
+  _$BrandsRecord._({this.brandName, this.ffRef}) : super._();
 
   @override
-  ContentsRecord rebuild(void Function(ContentsRecordBuilder) updates) =>
+  BrandsRecord rebuild(void Function(BrandsRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ContentsRecordBuilder toBuilder() =>
-      new ContentsRecordBuilder()..replace(this);
+  BrandsRecordBuilder toBuilder() => new BrandsRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is ContentsRecord &&
-        partName == other.partName &&
-        unitPrice == other.unitPrice &&
+    return other is BrandsRecord &&
         brandName == other.brandName &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, partName.hashCode), unitPrice.hashCode),
-            brandName.hashCode),
-        ffRef.hashCode));
+    return $jf($jc($jc(0, brandName.hashCode), ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'ContentsRecord')
-          ..add('partName', partName)
-          ..add('unitPrice', unitPrice)
+    return (newBuiltValueToStringHelper(r'BrandsRecord')
           ..add('brandName', brandName)
           ..add('ffRef', ffRef))
         .toString();
   }
 }
 
-class ContentsRecordBuilder
-    implements Builder<ContentsRecord, ContentsRecordBuilder> {
-  _$ContentsRecord? _$v;
-
-  String? _partName;
-  String? get partName => _$this._partName;
-  set partName(String? partName) => _$this._partName = partName;
-
-  double? _unitPrice;
-  double? get unitPrice => _$this._unitPrice;
-  set unitPrice(double? unitPrice) => _$this._unitPrice = unitPrice;
+class BrandsRecordBuilder
+    implements Builder<BrandsRecord, BrandsRecordBuilder> {
+  _$BrandsRecord? _$v;
 
   String? _brandName;
   String? get brandName => _$this._brandName;
@@ -164,15 +119,13 @@ class ContentsRecordBuilder
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  ContentsRecordBuilder() {
-    ContentsRecord._initializeBuilder(this);
+  BrandsRecordBuilder() {
+    BrandsRecord._initializeBuilder(this);
   }
 
-  ContentsRecordBuilder get _$this {
+  BrandsRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _partName = $v.partName;
-      _unitPrice = $v.unitPrice;
       _brandName = $v.brandName;
       _ffRef = $v.ffRef;
       _$v = null;
@@ -181,26 +134,22 @@ class ContentsRecordBuilder
   }
 
   @override
-  void replace(ContentsRecord other) {
+  void replace(BrandsRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$ContentsRecord;
+    _$v = other as _$BrandsRecord;
   }
 
   @override
-  void update(void Function(ContentsRecordBuilder)? updates) {
+  void update(void Function(BrandsRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  ContentsRecord build() => _build();
+  BrandsRecord build() => _build();
 
-  _$ContentsRecord _build() {
-    final _$result = _$v ??
-        new _$ContentsRecord._(
-            partName: partName,
-            unitPrice: unitPrice,
-            brandName: brandName,
-            ffRef: ffRef);
+  _$BrandsRecord _build() {
+    final _$result =
+        _$v ?? new _$BrandsRecord._(brandName: brandName, ffRef: ffRef);
     replace(_$result);
     return _$result;
   }

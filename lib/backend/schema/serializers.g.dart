@@ -7,6 +7,8 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(BrandsRecord.serializer)
+      ..add(ClaimsRecord.serializer)
       ..add(ClaimstatusRecord.serializer)
       ..add(ContentsRecord.serializer)
       ..add(Leftmenu2Record.serializer)

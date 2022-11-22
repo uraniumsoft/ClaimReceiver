@@ -13,6 +13,8 @@ import 'schema/materials_record.dart';
 import 'schema/contents_record.dart';
 import 'schema/units_record.dart';
 import 'schema/claimstatus_record.dart';
+import 'schema/brands_record.dart';
+import 'schema/claims_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -29,6 +31,8 @@ export 'schema/materials_record.dart';
 export 'schema/contents_record.dart';
 export 'schema/units_record.dart';
 export 'schema/claimstatus_record.dart';
+export 'schema/brands_record.dart';
+export 'schema/claims_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord({
@@ -402,6 +406,90 @@ Future<FFFirestorePage<ClaimstatusRecord>> queryClaimstatusRecordPage({
     queryCollectionPage(
       ClaimstatusRecord.collection,
       ClaimstatusRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query BrandsRecords (as a Stream and as a Future).
+Stream<List<BrandsRecord>> queryBrandsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      BrandsRecord.collection,
+      BrandsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<BrandsRecord>> queryBrandsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      BrandsRecord.collection,
+      BrandsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<BrandsRecord>> queryBrandsRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      BrandsRecord.collection,
+      BrandsRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query ClaimsRecords (as a Stream and as a Future).
+Stream<List<ClaimsRecord>> queryClaimsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ClaimsRecord.collection,
+      ClaimsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ClaimsRecord>> queryClaimsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ClaimsRecord.collection,
+      ClaimsRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<ClaimsRecord>> queryClaimsRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      ClaimsRecord.collection,
+      ClaimsRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

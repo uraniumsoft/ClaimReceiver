@@ -169,6 +169,7 @@ class _DataStatusEditWidgetState extends State<DataStatusEditWidget> {
                                           ?.toString(),
                                     ),
                                     autofocus: true,
+                                    readOnly: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'ลำดับสถานะ',

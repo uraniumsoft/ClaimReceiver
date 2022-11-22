@@ -10,6 +10,8 @@ import 'materials_record.dart';
 import 'contents_record.dart';
 import 'units_record.dart';
 import 'claimstatus_record.dart';
+import 'brands_record.dart';
+import 'claims_record.dart';
 
 import 'index.dart';
 
@@ -29,6 +31,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   ContentsRecord,
   UnitsRecord,
   ClaimstatusRecord,
+  BrandsRecord,
+  ClaimsRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

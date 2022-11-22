@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -16,6 +17,7 @@ class DataContentAddWidget extends StatefulWidget {
 }
 
 class _DataContentAddWidgetState extends State<DataContentAddWidget> {
+  String? dropDownValue;
   TextEditingController? textContentNameController;
   TextEditingController? textContentPriceController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -139,93 +141,146 @@ class _DataContentAddWidgetState extends State<DataContentAddWidget> {
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(50, 50, 50, 0),
-                              child: TextFormField(
-                                controller: textContentNameController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'สินทรัพย์',
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).bodyText2,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                      width: 1,
+                              child: Container(
+                                width: 300,
+                                child: TextFormField(
+                                  controller: textContentNameController,
+                                  autofocus: true,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelText: 'สินทรัพย์',
+                                    hintStyle:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                      width: 1,
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
                                   ),
+                                  style: FlutterFlowTheme.of(context).title3,
+                                  textAlign: TextAlign.center,
                                 ),
-                                style: FlutterFlowTheme.of(context).title3,
-                                textAlign: TextAlign.center,
                               ),
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(50, 50, 50, 0),
-                              child: TextFormField(
-                                controller: textContentPriceController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: 'ราคาตลาด',
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).bodyText2,
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                      width: 1,
+                                  EdgeInsetsDirectional.fromSTEB(50, 30, 50, 0),
+                              child: Container(
+                                width: 400,
+                                child: TextFormField(
+                                  controller: textContentPriceController,
+                                  autofocus: true,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelText: 'ราคาตลาด',
+                                    hintStyle:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                      width: 1,
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1,
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8),
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
                                   ),
+                                  style: FlutterFlowTheme.of(context).title3,
+                                  textAlign: TextAlign.center,
                                 ),
-                                style: FlutterFlowTheme.of(context).title3,
-                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(50, 30, 50, 0),
+                              child: StreamBuilder<List<BrandsRecord>>(
+                                stream: queryBrandsRecord(
+                                  queryBuilder: (brandsRecord) =>
+                                      brandsRecord.orderBy('brandName'),
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: CircularProgressIndicator(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  List<BrandsRecord> dropDownBrandsRecordList =
+                                      snapshot.data!;
+                                  return FlutterFlowDropDown<String>(
+                                    options: dropDownBrandsRecordList
+                                        .map((e) => e.brandName!)
+                                        .toList()
+                                        .toList(),
+                                    onChanged: (val) =>
+                                        setState(() => dropDownValue = val),
+                                    width: 400,
+                                    height: 50,
+                                    textStyle:
+                                        FlutterFlowTheme.of(context).title3,
+                                    hintText: 'ระบุยี่ห้อสินทรัพย์',
+                                    elevation: 2,
+                                    borderColor: Color(0xFF39B6EF),
+                                    borderWidth: 0,
+                                    borderRadius: 0,
+                                    margin: EdgeInsetsDirectional.fromSTEB(
+                                        12, 4, 12, 4),
+                                    hidesUnderline: true,
+                                  );
+                                },
                               ),
                             ),
                             Padding(
@@ -241,6 +296,7 @@ class _DataContentAddWidgetState extends State<DataContentAddWidget> {
                                       createContentsRecordData(
                                     partName: textContentNameController!.text,
                                     unitPrice: FFAppState().PriceNumber,
+                                    brandName: dropDownValue,
                                   );
                                   await ContentsRecord.collection
                                       .doc()
